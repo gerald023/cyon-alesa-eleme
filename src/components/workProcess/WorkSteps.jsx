@@ -16,10 +16,11 @@ const WorkSteps = ({ data, style }) => {
         } text-center center rounded-md`}
       >
         <svg
-          viewBox="0 0 32 32"
+          // viewBox="0 0 32 32"
           fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+          // xmlns="http://www.w3.org/2000/svg"
           className="max-sm:p-2 sm:w-8 sm:h-8"
+          xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"
         >
           <path d={data?.svgPath} fill={`${hover ? "#FFFFFF" : "#A53DFF"}`} />
         </svg>
