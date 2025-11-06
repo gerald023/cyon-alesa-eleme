@@ -3,21 +3,27 @@ import Roles from "./Roles";
 const rolesData = [
   {
     id: 1,
-    title: "User Experience (UX)",
+    title: "Web Development",
     description:
-      "I design intuitive and enjoyable experiences by understanding user needs, conducting research, and creating wireframes and prototypes that enhance usability.",
+      "We build responsive and high-performance web applications using modern technologies, ensuring accessibility, scalability, and maintainability.",
   },
   {
     id: 2,
-    title: "User Interface (UI)",
+    title: "Perfume and Soap making",
     description:
-      "I craft visually appealing and consistent interfaces, focusing on layout, color, and typography to ensure a seamless and engaging user journey.",
+      "We make the best kinds of perfumes that will leave people turning back just to catch a breath of you again. Our liquid soaps are also the best in Eleme.",
   },
   {
     id: 3,
-    title: "Web Development",
+    title: "Graphic Design",
     description:
-      "I build responsive and high-performance web applications using modern technologies, ensuring accessibility, scalability, and maintainability.",
+      "We craft visually appealing and consistent interfaces, focusing on layout, color, and typography to ensure a seamless and engaging user journey.",
+  },
+  {
+    id: 4,
+    title: "Paint Production",
+    description:
+      "We make quality and beautiful pigments of paints, like Silk/Satin paint, Matt Paint, Emulsion Paint and Oil/Gloss paint. We also offer Painting services across and beyond the state. ",
   },
 ];
 
@@ -28,15 +34,14 @@ const Profession = () => {
       id="services"
     >
       <div className="flex flex-col justify-between h-fit md:pe-8 lg:pe-35.75 max-md:text-center my-auto">
-        <p className="section-title max-md:text-center">What I do?</p>
+        <p className="section-title max-md:text-center">What We Do?</p>
         <div className="mt-6 text-[14px]">
-          <p className="text-xs sm:text-lg font-normal text-gray-400 mb-4">
-            I specialize in designing user experiences, crafting engaging
-            interfaces, and building robust web applications that deliver value
-            and usability.
+          <p className="text-xs sm:text-lg font-normal text-gray-700 mb-4">
+            We specialize in designing we design, crafting engaging
+            graphic designs, make the best kind of scents for perfumes and body spray, make quality paints and also offer painting services.
           </p>
-          <p className="text-xs sm:text-lg font-normal text-gray-400">
-            My approach combines creativity and technical expertise to deliver
+          <p className="text-xs sm:text-lg font-normal text-gray-700">
+            Our approach combines creativity and technical expertise to deliver
             solutions that are both visually appealing and highly functional for
             users.
           </p>

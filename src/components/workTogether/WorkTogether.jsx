@@ -6,11 +6,10 @@ const WorkTogether = () => {
     <div className="py-25 max-w-169 mx-auto px-2">
       <div className="text-center">
         <p className="text-white md:font-semibold text-2xl sm:text-3xl md:text-5xl pb-8">
-          Do you have a Project Idea? Let's discuss your project!
+          Do you have a Project? Let's discuss your project!
         </p>
         <p className="text-[#A5ACB5] text-xs sm:text-lg font-normal text-center pb-8">
-          I'm always open to discussing new projects and creative ideas. Let's
-          connect and build something amazing together.
+          We offer services like Perfumes making, Paint production, Graphic Designs, Web Design, Soap making and lots more!.
         </p>
         <a
           href="#!"
