@@ -40,10 +40,10 @@ const Profile = () => {
             className={`text-xs xs:text-[16px] lg:text-lg font-normal max-md:text-center text-gray-600`}
           >
             <p className={``}>
-              The Catholic Youth Organisation of Nigeria (CYON), Eleme Chapter, is set to round off the year with an exciting End of the Year Dinner Night filled with fun, fellowship, and celebration. The event will feature a variety of engaging activities
+              The Catholic Youth Organisation of Nigeria (CYON), Eleme Chapter, is set to round off the year with an exciting End of the Year Dinner Night filled with fun, fellowship, and celebration. The event will feature a variety of engaging activities including
             </p>
             <p className="mt-3 font-semibold">
-            including CTCT drama and comedy presentations, red carpet interviews, giveaways, member pairing members, a ball dance, and a pageantry competition!!
+             CTCT drama and comedy presentations, red carpet interviews, giveaways, pairing members, a ball dance, and a pageantry competition!!
             </p>
           </div>
           <div className="mt-8 flex max-md:justify-center">
