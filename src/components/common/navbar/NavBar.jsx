@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import logo from "../../../assets/logo.png";
 import { Link } from "react-scroll";
+import { NavLink } from "react-router-dom";
 
 const navItems = [
   { id: 1, name: "Home", url: "introduction" },
@@ -21,7 +22,7 @@ const menu = navItems.map((item) => (
   <li key={item.id} onMouseDown={(e) => e.preventDefault()}>
     <Link
       onClick={handleMenuClick}
-      to={item.url.toLowerCase()}
+      to={`${item.url.toLowerCase()}`}
       smooth={true}
       duration={1000}
       spy={true}
@@ -104,15 +105,15 @@ const NavBar = () => {
             {menu}
           </ul>
           <p className="">
-            <Link
+            <NavLink
               className="btn btn-sm xs:btn-md sm:btn-lg btn-primary"
-              href="#contact"
-              to={`contact`}
+              href="register"
+              to={`register`}
               smooth={true}
               duration={900}
             >
               Register
-            </Link>
+            </NavLink>
           </p>
         </div>
       </div>
