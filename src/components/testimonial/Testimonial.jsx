@@ -12,22 +12,22 @@ const testimonialData = [
     message:
       "Working with this team was a fantastic experience. Their attention to detail and commitment to quality exceeded our expectations.",
     quote: `From the initial consultation to the final delivery, every step was handled professionally. The end result was a product that not only met our needs but also impressed our stakeholders. Highly recommended!`,
-    name: "Esther Howard",
-    designation: "Managing Director, ABC Company",
+    name: "Rev. Fr. Anthony Baakel",
+    designation: "Parish Priest St Paul Alesa.",
   },
   {
     message:
       "Their expertise in UI/UX design helped us transform our digital presence and improve user engagement.",
     quote: `The team demonstrated a deep understanding of our requirements and delivered a solution that was both visually appealing and highly functional. Communication was clear throughout the project.`,
-    name: "Ali Haider",
-    designation: "COO, XYZ Company",
+    name: "Rev. Fr. John Poroma",
+    designation: "Parish Priest Bodo",
   },
   {
     message:
       "Professional, reliable, and creative—everything you want in a development partner.",
     quote: `They delivered our project on time and went above and beyond to ensure our satisfaction. The new features have made a significant difference for our users. We look forward to working together again.`,
-    name: "Elon Max",
-    designation: "Managing Director, KFC Company",
+    name: "Rev. Fr. Peter Mary",
+    designation: "Visiting Priest.",
   },
 ];
 

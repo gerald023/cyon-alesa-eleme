@@ -5,8 +5,9 @@ const Address = ({ item }) => {
   const [hover, setHover] = useState(false);
 
   return (
-    <div
-      className="max-w-84 p-3 md:p-3.75 lg:p-6 flex xs:not-odd:my-3 rounded-[10px] bg-white  hover:scale-[1] duration-450  cursor-pointer hover:shadow-[0px_0px_37px_5px_rgba(0,_0,_0,_0.1)] shadow-gray-200 max-sm:mx-auto"
+   <a href={item?.email ? `mailto:${item?.description}` : item?.tel ? `tel:${item?.description}` : '#!'}>
+     <div
+      className="max-w-84 p-3 md:p-3.75 lg:p-6 flex xs:not-odd:my-3 rounded-[10px] bg-white  hover:scale-[1] duration-450  cursor-pointer hover:shadow-[0px_0px_37px_5px_rgba(0,0,0,0.1)] shadow-gray-200 max-sm:mx-auto"
       /* Scale effect:  */
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
@@ -14,7 +15,7 @@ const Address = ({ item }) => {
       <div
         className={`h-10 md:h-12 aspect-square ${
           hover ? "bg-picto-primary" : "bg-[#EDD8FF80]"
-        } center rounded-[4px]`}
+        } center rounded-sm`}
       >
         <FontAwesomeIcon
           icon={item?.icon}
@@ -32,6 +33,7 @@ const Address = ({ item }) => {
         </p>
       </div>
     </div>
+   </a>
   );
 };
 
