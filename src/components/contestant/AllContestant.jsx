@@ -4,10 +4,11 @@ import img3 from "../../assets/images/blog/blog-3.jpg";
 import img4 from "../../assets/images/blog/blog-4.jpg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
-import MonoBlog from "./MonoBlog";
+// import MonoBlog from "./MonoBlog";
 import "swiper/css";
 import "swiper/css/pagination";
-import "./blog.css";
+import "../blog/blog.css";
+import MonoBlog from "../blog/MonoBlog";
 
 // Breakpoints for swiperJS
 const custom_breakpoints = {
@@ -32,7 +33,7 @@ const blogData = [
     date: "27 Oct, 2025",
     comments: "hardworking and passionate about helping others",
     title: "George Usulor",
-    link: "/contestant",
+    link: "#!",
     voteLink: "#vote_",
   },
   {
@@ -41,7 +42,7 @@ const blogData = [
     date: "27 Oct, 2025",
     comments: "hardworking and passionate about helping others",
     title: "John Douglas",
-    link: "/contestant",
+    link: "#!",
     voteLink: "#vote_",
   },
   {
@@ -50,7 +51,7 @@ const blogData = [
     date: "27 Oct, 2025",
     comments: "hardworking and passionate about helping others",
     title: "Samuel Onu",
-    link: "/contestant",
+    link: "#!",
     voteLink: "#vote_",
   },
   {
@@ -59,7 +60,7 @@ const blogData = [
     date: "27 Oct, 2025",
     comments: "hardworking and passionate about helping others",
     title: "Amarachi Nnachi",
-    link: "/contestant",
+    link: "#!",
     voteLink: "#vote_",
   },
   {
@@ -68,7 +69,7 @@ const blogData = [
     date: "27 Oct, 2025",
     comments: "hardworking and passionate about helping others",
     title: "Francis Ernest",
-    link: "/contestant",
+    link: "#!",
     voteLink: "#vote_",
   },
   {
@@ -77,18 +78,18 @@ const blogData = [
     date: "27 Oct, 2025",
     comments: "hardworking and passionate about helping others",
     title: "Sarah Acha",
-    link: "/contestant",
+    link: "#!",
     voteLink: "#vote_",
   },
 ];
 
-const Blog = () => {
+const AllContestants = () => {
   return (
-    <div className="content py-25 px-2 relative" id="blog">
-      <div className="max-w-135 text-center mx-auto pb-17.5">
-        <p className="section-title pb-6">Contestants...</p>
+    <div className="content py-25 px-2 relative">
+      <div className="max-w-135 text-center mx-auto pb-17.5" id='all-contestant'>
+        <p className="section-title pb-6">All Contestants...</p>
         <p className="text-xs xs:text-[16px] md:text-lg text-gray-400">
-          Check out all our Amiable contestants, read their profile and story, like their videos and vote for them.
+          Check out other contestants, read their profile and story, like their videos and vote for them.
         </p>
       </div>
       <Swiper
@@ -111,4 +112,4 @@ const Blog = () => {
   );
 };
 
-export default Blog;
+export default AllContestants;

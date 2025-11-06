@@ -1,8 +1,6 @@
 import WorkSteps from "./WorkSteps";
 
-// C4chBqxaTGWinE2I3sXymrGY+XTVjZxrK39ZV49CaZ8
 
-// ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKjnSBXxnGKJHUkQzYAbVbh3BnvccoJwHm7uySo2Nh0u lekaragerald19@gmail.com
 const workStepData = [
   {
     id: 1,
@@ -39,7 +37,7 @@ const workStepData = [
 ];
 
 const WorkProcess = () => {
-  return (
+  return ( 
     <div
       className="content grid xl:grid-cols-2 xl:items-center px-2 py-5 md:py-10 lg:py-25 xl:py-35 max-xxl:px-4"
       id="work-process"

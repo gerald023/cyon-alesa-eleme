@@ -35,7 +35,7 @@ const Register = () => {
               <div className="xxl:max-w-106 w-auto h-auto xxl:max-h-126">
           <div className="max-w-106 h-117 object-fill overflow-hidden rounded-xl">
             <img
-              className="bg-soft-white h-[100%] object-cover"
+              className="bg-soft-white h-full object-cover"
               src={winner_img}
               alt=""
             />

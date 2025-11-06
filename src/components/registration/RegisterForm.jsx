@@ -49,23 +49,38 @@ function RegisterForm() {
               required
             />
 
-            <select
+            <div className="flex gap-2.5 flex-row-reverse">
+                <select
               name="Community"
               placeholder="Community"
               className={`${commonClass}`}
               id=""
             >
               <option value="" disabled selected hidden>
-                Select your Community
+                Community
               </option>
               <option value="Alesa">Alesa</option>
               <option value="Alode">Alode</option>
               <option value="Aleto">Aleto</option>
               <option value="Agbonchia">Agbonchia</option>
             </select>
+            <select
+              name="Gender"
+              placeholder="Gender"
+              className={`${commonClass}`}
+              id=""
+            >
+              <option value="" disabled selected hidden>
+                Gender
+              </option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+             
+            </select>
+            </div>
             <input
               type="text"
-              placeholder="Hobbies*"
+              placeholder="Hobbies* (e.g: reading, dancing, singing...)"
               className={`${commonClass}`}
               required
             />
