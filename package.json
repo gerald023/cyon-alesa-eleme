@@ -11,12 +11,19 @@
         "preview": "vite preview"
     },
     "dependencies": {
+        "@dataconnect/generated": "file:src/dataconnect-generated",
         "@fortawesome/fontawesome-svg-core": "^6.7.2",
         "@fortawesome/free-brands-svg-icons": "^6.7.2",
         "@fortawesome/free-regular-svg-icons": "^6.7.2",
         "@fortawesome/free-solid-svg-icons": "^6.7.2",
         "@fortawesome/react-fontawesome": "^0.2.2",
         "@tailwindcss/vite": "^4.0.14",
+        "axios": "^1.13.2",
+        "cloudinary": "^2.8.0",
+        "crypto": "^1.0.1",
+        "dayjs": "^1.11.19",
+        "firebase": "^12.5.0",
+        "js-sha512": "^0.9.0",
         "localforage": "^1.10.0",
         "match-sorter": "^8.0.0",
         "react": "^19.0.0",
@@ -26,8 +33,11 @@
         "react-scroll": "^1.9.3",
         "react-spinners": "^0.17.0",
         "sort-by": "^0.0.2",
+        "sweetalert2": "^11.26.3",
         "swiper": "^11.2.8",
-        "tailwindcss": "^4.0.14"
+        "tailwindcss": "^4.0.14",
+        "uuid": "^13.0.0",
+        "zod": "^4.1.12"
     },
     "devDependencies": {
         "@eslint/js": "^9.21.0",

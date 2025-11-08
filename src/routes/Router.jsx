@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import Loading from "../components/common/loading/Loading";
 import Contestant from "../pages/Contestant";
+import VoteContestant from "../pages/VoteContestant";
 const Home = lazy(() => import("../pages/Home"));
 const Register = lazy(() => import("../pages/Register"));
 const Main = lazy(() => import("../layouts/Main"));
@@ -32,6 +33,10 @@ export const router = createBrowserRouter(
     {
       path: 'contestant',
       element: <Contestant/>
+    },
+    {
+      path: '/contestant/vote',
+      element: <VoteContestant/>
     },
   ],
   // { basename: `${repoName}` }

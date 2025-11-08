@@ -1,0 +1,47 @@
+type User @table {
+  email: String!
+  displayName: String!
+  createdAt: Timestamp!
+  photoUrl: String
+  gender: String
+  bio: String
+}
+
+type PageantRegistration @table {
+  user: User!
+  createdAt: Timestamp!
+  registrationDate: Timestamp!
+  hobbies: String
+  specificPageantInfo: String
+}
+
+type Event @table {
+  name: String!
+  date: Date!
+  location: String!
+  price: Float!
+  createdAt: Timestamp!
+  description: String
+  totalTickets: Int
+}
+
+type TicketPurchase @table {
+  user: User!
+  event: Event!
+  quantity: Int!
+  totalPrice: Float!
+  purchaseDate: Timestamp!
+  paymentStatus: String!
+  createdAt: Timestamp!
+  opayTransactionId: String
+}
+
+type Hobby @table {
+  name: String!
+  description: String
+}
+
+type UserHobby @table(key: ["user", "hobby"]) {
+  user: User!
+  hobby: Hobby!
+}

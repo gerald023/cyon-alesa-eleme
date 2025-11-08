@@ -9,6 +9,9 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "../blog/blog.css";
 import MonoBlog from "../blog/MonoBlog";
+import { getAllContestants } from "../../server/services/contestant_service";
+import { useEffect, useState } from "react";
+import dayjs from "dayjs";
 
 // Breakpoints for swiperJS
 const custom_breakpoints = {
@@ -84,6 +87,15 @@ const blogData = [
 ];
 
 const AllContestants = () => {
+  const [allContestants, setAllContestant] = useState([])
+    const allPageants = async()=>{
+      const res = await getAllContestants();
+      setAllContestant(res)
+    }
+    useEffect(()=>{
+       allPageants()
+    }, 1000)
+
   return (
     <div className="content py-25 px-2 relative">
       <div className="max-w-135 text-center mx-auto pb-17.5" id='all-contestant'>
@@ -98,13 +110,20 @@ const AllContestants = () => {
         pagination={{ clickable: true }}
         modules={[Pagination]}
       >
-        {blogData?.map((data, index) => (
+        {allContestants?.map((data, index) => (
           <SwiperSlide
             key={index}
             className="mb-10" /* pagination margin bottom to 40px */
             style={{ backgroundColor: "rgba(0,0,0,0)" }}
           >
-            <MonoBlog data={data} key={index} />
+            <MonoBlog data={{
+              image: data.profilePicture,
+              date: dayjs(data.createdAt).format("ddd, D MMMM YYYY"),
+              comments: data.hobbies,
+              title: data.fullName,
+              link: `/contestant/?name=${data.fullName}&contestant=${data.userId}`,
+              voteLink: `/contestant/vote/?name=${data.fullName}&contestant=${data.userId}`,
+            }} key={index} />
           </SwiperSlide>
         ))}
       </Swiper>

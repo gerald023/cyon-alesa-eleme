@@ -1,0 +1,100 @@
+mutation CreateSeedData @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public") @transaction {
+  user_insertMany(data: [
+    {
+      id: "550e8400-e29b-41d4-a716-446655440000",
+      displayName: "demouser1",
+      email: "demo1@example.com",
+      createdAt: "2024-04-24T12:00:00Z"
+    },
+    {
+      id: "550e8400-e29b-41d4-a716-446655440001",
+      displayName: "demouser2",
+      email: "demo2@example.com",
+      createdAt: "2024-04-24T13:00:00Z"
+    }
+  ])
+  hobby_insertMany(data: [
+    {
+      id: "650e8400-e29b-41d4-a716-446655440000",
+      name: "Chess",
+      description: "A strategic board game"
+    },
+    {
+      id: "650e8400-e29b-41d4-a716-446655440001",
+      name: "Photography",
+      description: "Capturing moments in time"
+    }
+  ])
+  userHobby_insertMany(data: [
+    {
+      userId: "550e8400-e29b-41d4-a716-446655440000",
+      hobbyId: "650e8400-e29b-41d4-a716-446655440000"
+    },
+    {
+      userId: "550e8400-e29b-41d4-a716-446655440001",
+      hobbyId: "650e8400-e29b-41d4-a716-446655440001"
+    }
+  ])
+  event_insertMany(data: [
+    {
+      id: "750e8400-e29b-41d4-a716-446655440000",
+      name: "Summer Festival",
+      description: "A celebration of summer",
+      location: "Central Park",
+      date: "2024-07-20",
+      createdAt: "2024-04-24T14:00:00Z",
+      price: 25.00,
+      totalTickets: 100
+    },
+    {
+      id: "750e8400-e29b-41d4-a716-446655440001",
+      name: "Art Exhibition",
+      description: "A showcase of local artists",
+      location: "Art Gallery",
+      date: "2024-05-15",
+      createdAt: "2024-04-24T15:00:00Z",
+      price: 15.00,
+      totalTickets: 50
+    }
+  ])
+  ticketPurchase_insertMany(data: [
+    {
+      id: "850e8400-e29b-41d4-a716-446655440000",
+      userId: "550e8400-e29b-41d4-a716-446655440000",
+      eventId: "750e8400-e29b-41d4-a716-446655440000",
+      purchaseDate: "2024-04-25T10:00:00Z",
+      createdAt: "2024-04-24T16:00:00Z",
+      quantity: 2,
+      totalPrice: 50.00,
+      paymentStatus: "completed"
+    },
+    {
+      id: "850e8400-e29b-41d4-a716-446655440001",
+      userId: "550e8400-e29b-41d4-a716-446655440001",
+      eventId: "750e8400-e29b-41d4-a716-446655440001",
+      purchaseDate: "2024-04-26T11:00:00Z",
+      createdAt: "2024-04-24T17:00:00Z",
+      quantity: 1,
+      totalPrice: 15.00,
+      paymentStatus: "completed"
+    }
+  ])
+   pageantRegistration_insertMany(data: [
+    {
+      id: "950e8400-e29b-41d4-a716-446655440000",
+      userId: "550e8400-e29b-41d4-a716-446655440000",
+      registrationDate: "2024-04-28T10:00:00Z",
+      createdAt: "2024-04-24T16:00:00Z",
+      hobbies: "Ballet, Piano",
+      specificPageantInfo: "Miss Aesa 2024"
+    },
+    {
+      id: "950e8400-e29b-41d4-a716-446655440001",
+      userId: "550e8400-e29b-41d4-a716-446655440001",
+      registrationDate: "2024-04-29T11:00:00Z",
+      createdAt: "2024-04-24T17:00:00Z",
+      hobbies: "Swimming, Painting",
+      specificPageantInfo: "Little Miss Aesa 2024"
+    }
+  ])
+}

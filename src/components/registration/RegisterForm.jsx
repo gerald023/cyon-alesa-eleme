@@ -1,28 +1,109 @@
 import { faImage } from "@fortawesome/free-regular-svg-icons";
 import { faPaperPlane, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { signUp } from "../../server/services/auth_services";
+import { signupSchema } from "../../zod/formValidation";
+import { uploadToCloudinary } from "../../server/cloudinary/uploadImage";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const commonClass =
   "input input-lg border-0 border-b-2 focus:outline-none focus:placeholder:text-picto-primary placeholder:text-[15px] md:placeholder:text-lg focus:border-picto-primary border-[#E6E8EB] w-full rounded-none px-0";
 
 function RegisterForm() {
+ const navigate = useNavigate();
+ const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    password: "password12345",
+    gender: "",
+    community: "",
+    hobbies: "",
+    profilePicture: "",
+    bio: "",
+  });
+
+  const Toast = Swal.mixin({
+  toast: true,
+  position: "top-end",
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  // didOpen: (toast) => {
+  //   toast.onmouseenter = Swal.stopTimer;
+  //   toast.onmouseleave = Swal.resumeTimer;
+  // }
+});
+
+   const [errors, setErrors] = useState({});
+  const [message, setMessage] = useState("");
+
   const [image, setImage] = useState(null);
 
-  const handleImageChange = (e) => {
+  const handleImageChange = async (e) => {
     const file = e.target.files[0];
     if (file && file.type.startsWith("image/")) {
       setImage({
         file,
         preview: URL.createObjectURL(file),
       });
+      setTimeout( async () => {
+        const imgUrl = await uploadToCloudinary(file)
+      setFormData({ ...formData, [e.target.name]: imgUrl });
+      console.log(imgUrl)
+      }, 2000);
     } else {
       alert("Please select a valid image file.");
     }
   };
-
+// console.log(image)
   const handleRemoveImage = () => {
+    setFormData({ ...formData, profilePicture: '' });
     setImage(null);
+  };
+
+  
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const [loading, setLoading] = useState(false)
+  const handleSignup = async (e) => {
+    e.preventDefault();
+
+    // ✅ Step 1: Validate with Zod
+    const result = signupSchema.safeParse(formData);
+    console.log(result, formData);
+    if (!result.success) {
+      // Extract errors
+      const formattedErrors = result.error.flatten().fieldErrors;
+      setErrors(formattedErrors);
+      setMessage("Please fix the errors before submitting.");
+      return;
+    }
+
+    // ✅ Step 2: Submit if validation passed
+    try {
+     setLoading(true)
+      const res = await signUp(formData.email, '123456ddff', formData);
+      console.log(res)
+
+      Toast.fire({
+        didClose: ()=>{
+          navigate(`/contestant/?name=${res.profileDoc.fullName}&contestant=${res.profileDoc.userId}`)
+        },
+        icon: "success",
+        title: "Signed up successfully"
+      });
+      setMessage("Account created successfully!");
+      setErrors({});
+      setLoading(false);
+    } catch (err) {
+      setLoading(false)
+      console.log(err)
+      setMessage(err.message);
+    }
   };
 
   return (
@@ -33,28 +114,35 @@ function RegisterForm() {
         </p>
         <div className="mx-2">
           <form
-            action="mailto:stpaulsalesa@gmail.com"
+            action=""
+            onSubmit={handleSignup}
             className="flex flex-col gap-4 mt-4"
           >
             <input
               type="text"
+              name="fullName"
+              onChange={handleChange}
               placeholder="Full name*"
               className={`${commonClass}`}
-              required
+              // required
             />
+            {errors.fullName && <p className="text-red-500">{errors.fullName[0]}</p>}
             <input
               type="email"
               placeholder="Email*"
               className={`${commonClass}`}
-              required
+              name="email"
+              onChange={handleChange}
+              // required
             />
-
+            {errors.email && <p className="text-red-500">{errors.email[0]}</p>}
             <div className="flex gap-2.5 flex-row-reverse">
                 <select
-              name="Community"
+              name="community"
               placeholder="Community"
               className={`${commonClass}`}
               id=""
+              onChange={handleChange}
             >
               <option value="" disabled selected hidden>
                 Community
@@ -64,11 +152,13 @@ function RegisterForm() {
               <option value="Aleto">Aleto</option>
               <option value="Agbonchia">Agbonchia</option>
             </select>
+            {/* {errors.community && <p className="text-red-500">{errors.community[0]}</p>} */}
             <select
-              name="Gender"
+              name="gender"
               placeholder="Gender"
               className={`${commonClass}`}
               id=""
+               onChange={handleChange}
             >
               <option value="" disabled selected hidden>
                 Gender
@@ -77,17 +167,27 @@ function RegisterForm() {
               <option value="female">Female</option>
              
             </select>
+            
+            </div>
+            <div className="flex gap-2.5 justify-start ">
+              {errors.gender && <p className="text-red-500">{errors.gender[0]}</p>}
+              {errors.community && <p className="text-red-500">{errors.community[0]}</p>}
+              
             </div>
             <input
               type="text"
               placeholder="Hobbies* (e.g: reading, dancing, singing...)"
               className={`${commonClass}`}
-              required
+              onChange={handleChange}
+              name="hobbies"
+              // required
             />
+            {errors.hobbies && <p className="text-red-500">{errors.hobbies[0]}</p>}
 
 
             {!image && (
-        <label
+       <>
+         <label
           htmlFor="fileInput"
           className="cursor-pointer border-2 border-dashed border-gray-400 hover:border-picto-primary bg-gray-50 hover:bg-gray-100 transition-colors duration-200 w-48 h-48 flex flex-col items-center justify-center rounded-xl text-gray-500 hover:text-picto-primary"
         >
@@ -97,11 +197,16 @@ function RegisterForm() {
           <input
             id="fileInput"
             type="file"
-            accept="image/*"
+            name="profilePicture"
             onChange={handleImageChange}
+            accept="image/*"
+            
             className="hidden"
           />
+          
         </label>
+        {errors.profilePicture && <p className="text-red-500">{errors.profilePicture[0]}</p>}
+       </>
       )}
 
       {image && (
@@ -123,19 +228,30 @@ function RegisterForm() {
       )}
 
             <textarea
-              name="About"
+              name="bio"
               className={`${commonClass} h-45`}
-              required
+              // required
+              onChange={handleChange}
               placeholder="Tell us about yourself...*"
               id=""
             ></textarea>
+            {errors.bio && <p className="text-red-500">{errors.bio[0]}</p>}
             <button
               type="submit"
+              disabled={loading}
               className="btn gap-3 max-lg:mx-auto btn-primary rounded-sm mt-5 text-[13px] md:text-[16px] w-fit font-semibold lg:mt-12.5 p-2 md:px-4"
             >
-              Send
+              {
+                loading ? 'signing in...' 
+                :
+                <>
+                Send
               <FontAwesomeIcon icon={faPaperPlane} />
+                </>
+              }
+              
             </button>
+            {/* <p className="text-center mt-2 text-sm">{message}</p> */}
           </form>
         </div>
       </div>

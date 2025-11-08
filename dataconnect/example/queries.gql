@@ -1,0 +1,39 @@
+mutation CreateUser @auth(level: USER) {
+  user_insert(data: {
+    displayName: "New User",
+    email: "newuser@example.com",
+    createdAt_expr: "request.time",
+    id_expr: "uuidV4()"
+  })
+}
+
+query ListEvents @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public") {
+  events {
+    id
+    name
+    date
+    location
+    price
+  }
+}
+
+mutation PurchaseTicket($eventId: UUID!, $quantity: Int!) @auth(level: USER) {
+  ticketPurchase_insert(data: {
+    eventId: $eventId,
+    userId_expr: "auth.uid",
+    quantity: $quantity,
+    totalPrice_expr: "quantity * 10", # Assuming a fixed price of 10 per ticket
+    paymentStatus: "pending",
+    purchaseDate_expr: "request.time",
+    createdAt_expr: "request.time"
+  })
+}
+
+query MyPageantRegistrations @auth(level: USER) {
+  pageantRegistrations(where: {userId: {eq_expr: "auth.uid"}}) {
+    id
+    registrationDate
+    hobbies
+    specificPageantInfo
+  }
+}

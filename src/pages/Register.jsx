@@ -53,7 +53,7 @@ const Register = () => {
           </div>
           <div className="w-full overflow-y-scroll py-6.5">
             <p className="text-xl mb-2 xs:text-2xl sm:text-2xl md:text-[38px] font-semibold text-[#132238] lg:hidden text-center">
-              Let’s discuss your Project
+              Want To Join Our Contest...
             </p>
             <RegisterForm />
           </div>
