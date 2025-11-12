@@ -8,8 +8,7 @@
         "build": "vite build",
         "deploy": "vite build && gh-pages --dotfiles -d dist",
         "lint": "eslint .",
-        "preview": "vite preview",
-        "postinstall": "npm install --legacy-peer-deps"
+        "preview": "vite preview"
     },
     "dependencies": {
         "@dataconnect/generated": "file:src/dataconnect-generated",
@@ -30,7 +29,6 @@
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
         "react-fast-marquee": "^1.6.5",
-        "react-paystack": "^6.0.0",
         "react-router-dom": "^7.3.0",
         "react-scroll": "^1.9.3",
         "react-spinners": "^0.17.0",
