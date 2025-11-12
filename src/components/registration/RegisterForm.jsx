@@ -52,7 +52,7 @@ function RegisterForm() {
         const imgUrl = await uploadToCloudinary(file)
       setFormData({ ...formData, [e.target.name]: imgUrl });
       console.log(imgUrl)
-      }, 2000);
+      }, 1000);
     } else {
       alert("Please select a valid image file.");
     }
@@ -76,13 +76,13 @@ function RegisterForm() {
     // ✅ Step 1: Validate with Zod
     const result = signupSchema.safeParse(formData);
     console.log(result, formData);
-    if (!result.success) {
-      // Extract errors
-      const formattedErrors = result.error.flatten().fieldErrors;
-      setErrors(formattedErrors);
-      setMessage("Please fix the errors before submitting.");
-      return;
-    }
+    // if (!result.success) {
+    //   // Extract errors
+    //   const formattedErrors = result.error.flatten().fieldErrors;
+    //   setErrors(formattedErrors);
+    //   setMessage("Please fix the errors before submitting.");
+    //   return;
+    // }
 
     // ✅ Step 2: Submit if validation passed
     try {
