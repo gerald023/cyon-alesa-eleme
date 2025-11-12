@@ -32,3 +32,12 @@ export const createOrderModel = (userId, orderData) => ({
   status: orderData.status || "pending",
   createdAt: new Date().toISOString(),
 });
+
+export const createVote = (voteData) =>({
+  id: uuidv4(),
+  fullName: voteData.fullName,
+      email: voteData.email,
+      reference: voteData.reference,
+      contestantId: voteData.contestantId,
+      numberOfVote: voteData.numberOfVote
+})

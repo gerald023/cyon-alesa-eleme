@@ -69,6 +69,7 @@ function RegisterForm() {
   };
 
   const [loading, setLoading] = useState(false)
+  
   const handleSignup = async (e) => {
     e.preventDefault();
 

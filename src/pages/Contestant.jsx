@@ -16,7 +16,7 @@ function Contestant() {
          console.log(contestant)
         const res = await getOneContestant(contestant);
         setContestant(res);
-        console.log(res)
+        // console.log(res)
     }
     useEffect(()=>{
         getTheContestant()
