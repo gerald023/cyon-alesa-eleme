@@ -52,7 +52,7 @@ function RegisterForm() {
         const imgUrl = await uploadToCloudinary(file)
       setFormData({ ...formData, [e.target.name]: imgUrl });
       console.log(imgUrl)
-      }, 1000);
+      }, 2000);
     } else {
       alert("Please select a valid image file.");
     }
@@ -74,8 +74,8 @@ function RegisterForm() {
     e.preventDefault();
 
     // ✅ Step 1: Validate with Zod
-    const result = signupSchema.safeParse(formData);
-    console.log(result, formData);
+    // const result = signupSchema.safeParse(formData);
+    // console.log(result, formData);
     // if (!result.success) {
     //   // Extract errors
     //   const formattedErrors = result.error.flatten().fieldErrors;
