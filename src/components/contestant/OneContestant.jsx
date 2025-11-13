@@ -69,7 +69,7 @@ function OneContestant({data}) {
     setLoading(true)
                 // const {email, amount, contestantId, fullName, numberOfVote} = req.body;
     try{
-        const res =  await axios.post("https://cyon-stpaul-server.onrender.com/initiate-payment", {
+        const res =  await axios.post("http://localhost:3000/initiate-payment", {
       email: contestantData.email,
       amount: noVote * 100,
       fullName: contestantData.fullName,

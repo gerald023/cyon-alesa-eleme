@@ -66,7 +66,7 @@ function VerifyTransaction() {
             return;
         }
     const res = await axios.get(
-      `https://cyon-stpaul-server.onrender.com/verify-payment/?reference=${reference}&contestantId=${contestantId}`
+      `http://localhost:3000/verify-payment/?reference=${reference}&contestantId=${contestantId}`
     );
     console.log(res);
     const successful = res.data.status;
