@@ -3,7 +3,6 @@ import { useCallback, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import successImg from '../assets/images/success/successful.gif'
-import { saveTransaction } from "../server/services/transactionService";
 import Loading from "../components/common/loading/Loading";
 
 function VerifyTransaction() {
@@ -66,25 +65,16 @@ function VerifyTransaction() {
             return;
         }
     const res = await axios.get(
-      `http://localhost:3000/verify-payment/?reference=${reference}&contestantId=${contestantId}`
+      `https://cyon-stpaul-server.onrender.com/verify-payment/?reference=${reference}&contestantId=${contestantId}`
     );
     console.log(res);
     const successful = res.data.status;
     
     if (successful === "SUCCESS") {
         setTransaction(res.data)
-    //   const data = {
-    //     fullName: res.data.contestant.fullName,
-    //     email: res.data.contestant.email,
-    //     reference: res.data.transaction.reference,
-    //     contestantId,
-    //     numberOfVote: res.data.contestant.numberOfVote
-    // }
+
     setSuccess(true)
-        // const firebaseRes = await saveTransaction(data)
-        // console.log(firebaseRes)
-        // setTransaction(res.data)
-        // console.log(transaction, success)
+
         setSuccess(true)
     }
     }catch(e){

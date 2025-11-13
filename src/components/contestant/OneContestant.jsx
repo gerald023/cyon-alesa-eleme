@@ -12,12 +12,10 @@ import axios from 'axios';
 function OneContestant({data}) {
 
  const [contestantData, setContestantData] = useState(data)
-  // console.log(contestantData)
   const [noVote, setNoVote] = useState(1)
    useEffect(() => {
     if (data) {
       setContestantData(data);
-      console.log(noVote)
     }
   }, [ data, noVote]);
 
@@ -26,15 +24,11 @@ function OneContestant({data}) {
   const increaseDecreaseVote = (sign)=>{
       if (sign==="decrease" && noVote > 1) {
         setNoVote(noVote - 1)
-        console.log(noVote)
       }else if (sign=="increase") {
         setNoVote(noVote + 1)
-        console.log(noVote)
       }
   }
 
-// console.log("Parent data:", data);
-  console.log("Local contestantData:", contestantData);
   const contestantStep = [
     {
       id: 1,
@@ -67,9 +61,8 @@ function OneContestant({data}) {
   const [loading, setLoading] = useState(false)
   const startPayment = async()=>{
     setLoading(true)
-                // const {email, amount, contestantId, fullName, numberOfVote} = req.body;
     try{
-        const res =  await axios.post("http://localhost:3000/initiate-payment", {
+        const res =  await axios.post("https://cyon-stpaul-server.onrender.com/initiate-payment", {
       email: contestantData.email,
       amount: noVote * 100,
       fullName: contestantData.fullName,
@@ -78,7 +71,6 @@ function OneContestant({data}) {
     })
     console.log(res);
     setTimeout(() => {
-      // navigate(res.data.authorization_url)
       window.location.href = res.data.authorization_url ;
     }, 100);
     }catch(e){
